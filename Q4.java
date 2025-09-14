@@ -1,0 +1,29 @@
+import java.util.*;
+public class Q4 {
+        public static int minPathSum(int[][] grid){
+            if(grid==null||grid.length==0||grid[0].length==0)return 0;
+            int m=grid.length,n=grid[0].length;
+            int[][] dp=new int[m][n];
+            dp[0][0]=grid[0][0];
+            for(int i=1;i<m;i++)
+                dp[i][0]=dp[i-1][0]+grid[i][0];
+            for(int j=1;j<n;j++)
+                dp[0][j]=dp[0][j-1]+grid[0][j];
+            for(int i=1;i<m;i++){
+                for(int j=1;j<n;j++){
+                    dp[i][j]=Math.min(dp[i-1][j],dp[i][j-1])+grid[i][j];
+                }
+            }
+            return dp[m-1][n-1];
+        }
+        public static void main(String[] args){
+            int[][] grid1={{10,8,2},{10,5,100},{1,1,2}};
+            System.out.println("Test Case 1 Grid:");
+            for(int[] row:grid1)System.out.println(Arrays.toString(row));
+            System.out.println("Minimum Path Sum: "+minPathSum(grid1));
+            int[][] grid2={{1,3,1},{1,5,1},{4,2,1}};
+            System.out.println("\nTest Case 2 Grid:");
+            for(int[] row:grid2)System.out.println(Arrays.toString(row));
+            System.out.println("Minimum Path Sum: "+minPathSum(grid2));
+        }
+}
