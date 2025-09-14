@@ -1,5 +1,3 @@
-package DAA_TA_2;
-
 import java.util.*;
 public class Q1 {
     public static int lengthOfLIS(int[] nums) {
@@ -38,3 +36,4 @@ public class Q1 {
     }
 
 }
+
